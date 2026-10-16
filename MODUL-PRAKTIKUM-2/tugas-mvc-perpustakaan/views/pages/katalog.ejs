@@ -1,0 +1,46 @@
+<%- include('../partials/header') %>
+
+<div class="card">
+    <h1>Katalog Buku</h1>
+
+    <table>
+        <tr>
+            <th>Nama Buku</th>
+            <th>Harga</th>
+            <th>Kategori</th>
+        </tr>
+
+        <% daftarBuku.forEach(buku => { %>
+            <tr>
+                <td><%= buku.nama %></td>
+                <td>Rp <%= buku.harga %></td>
+                <td><%= buku.kategori %></td>
+            </tr>
+        <% }) %>
+    </table>
+</div>
+
+<div class="card">
+    <h2>Tambah Buku</h2>
+
+    <form action="/katalog/tambah" method="POST">
+
+        <label>Nama Buku</label>
+        <input type="text" name="nama" required>
+
+        <label>Harga Buku</label>
+        <input type="number" name="harga" min="0" required>
+
+        <label>Kategori</label>
+        <select name="kategori">
+            <option value="Teknologi">Teknologi</option>
+            <option value="Pendidikan">Pendidikan</option>
+            <option value="Novel">Novel</option>
+        </select>
+
+        <button type="submit">Tambah Buku</button>
+
+    </form>
+</div>
+
+<%- include('../partials/footer') %>
